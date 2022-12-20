@@ -19,7 +19,7 @@ public class TapeManager : MonoBehaviour
 
     int currentTapePoint = 0;
 
-    public TMP_Text measurementText;
+    public TMP_Text measText;
 
     public TMP_Text floatingMeasurementText;
     public GameObject floatingMeasurementObject;
@@ -149,8 +149,8 @@ public class TapeManager : MonoBehaviour
         //change the text to display the Measurement
         string measStr = Measurement.ToString("#.##") + currentMode;
 
-        distanceText.text = measStr;
-        floatingDistanceText.text = measStr;
+        measText.text = measStr;
+        floatingMeasurementText.text = measStr;
 
     }
 
