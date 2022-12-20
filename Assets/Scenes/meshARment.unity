@@ -462,6 +462,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlacementIndicator
       objectReference: {fileID: 0}
+    - target: {fileID: 1824589365045356997, guid: 253a717aade45cc4c9ae838ec317b76c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824589365045356997, guid: 253a717aade45cc4c9ae838ec317b76c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824589365045356997, guid: 253a717aade45cc4c9ae838ec317b76c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 253a717aade45cc4c9ae838ec317b76c, type: 3}
 --- !u!1 &433457006 stripped
