@@ -466,7 +466,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 253a717aade45cc4c9ae838ec317b76c, type: 3}
 --- !u!1 &433457006 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1824589364742048061, guid: 253a717aade45cc4c9ae838ec317b76c, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1824589365045356996, guid: 253a717aade45cc4c9ae838ec317b76c, type: 3}
   m_PrefabInstance: {fileID: 433457005}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &533699502
@@ -1369,9 +1369,9 @@ MonoBehaviour:
   - {fileID: 185509313}
   - {fileID: 421890505}
   reticle: {fileID: 433457006}
-  distanceText: {fileID: 1409861180}
-  floatingDistanceText: {fileID: 1409861180}
-  floatingDistanceObject: {fileID: 1409861179}
+  measText: {fileID: 1409861180}
+  floatingMeasurementText: {fileID: 1409861180}
+  floatingMeasurementObject: {fileID: 1409861179}
   line: {fileID: 2039424549}
 --- !u!1001 &2039424548
 PrefabInstance:
