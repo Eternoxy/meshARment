@@ -12,23 +12,20 @@ public class TapeManager : MonoBehaviour
     public GameObject[] tapePoints;
     public GameObject reticle;
 
-    float Measurement = 0f;
-
     float distanceBetweenPoints = 0f;
-    float inclineBetweenPoints = 0f;
 
     int currentTapePoint = 0;
 
-    public TMP_Text measText;
+    public TMP_Text distanceText;
 
-    public TMP_Text floatingMeasurementText;
-    public GameObject floatingMeasurementObject;
+    public TMP_Text floatingDistanceText;
+    public GameObject floatingDistanceObject;
 
     public LineRenderer line;
-
+    
     bool placementEnabled = true;
 
-    Mode currentMode = Mode.meter;
+    Unit currentUnit = Unit.m;
 
     void Start()
     {
@@ -38,8 +35,8 @@ public class TapeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        UpdateMeasurement();
+        
+        UpdateDistance();
         PlaceFloatingText();
 
         // shoot a raycast from the center of the screen
@@ -64,7 +61,7 @@ public class TapeManager : MonoBehaviour
             {
                 reticle.SetActive(true);
             }
-
+                
             //if the user taps, place a tape point. disable more placements until the end of the touch
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
@@ -74,7 +71,7 @@ public class TapeManager : MonoBehaviour
                 }
                 placementEnabled = false;
             }
-            else if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
+            else if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
             {
                 placementEnabled = true;
             }
@@ -103,54 +100,47 @@ public class TapeManager : MonoBehaviour
         currentTapePoint += 1;
     }
 
-    void UpdateMeasurement()
+    void UpdateDistance()
     {
-        float Measurement = 0f;
-
-        switch (currentMode)
+        if (currentTapePoint == 0)
         {
-            case Mode.meter:
-                if (currentTapePoint == 0)
-                {
-                    distanceBetweenPoints = 0f;
-                }
-                else if (currentTapePoint == 1)
-                {
-                    distanceBetweenPoints = Vector3.Distance(tapePoints[0].transform.position, reticle.transform.position);
-                }
-                else if (currentTapePoint == 2)
-                {
-                    distanceBetweenPoints = Vector3.Distance(tapePoints[0].transform.position, tapePoints[1].transform.position);
-                }
-                Measurement = distanceBetweenPoints;
+            distanceBetweenPoints = 0f;
+        }
+        else if (currentTapePoint == 1)
+        {
+            distanceBetweenPoints = Vector3.Distance(tapePoints[0].transform.position, reticle.transform.position);
+        }
+        else if (currentTapePoint == 2)
+        {
+            distanceBetweenPoints = Vector3.Distance(tapePoints[0].transform.position, tapePoints[1].transform.position);
+        }
+
+        //convert units
+        float convertedDistance = 0f;
+
+        switch (currentUnit)
+        {
+            case Unit.m:
+                convertedDistance = distanceBetweenPoints;
                 break;
-            case Mode.degree:
-                if (currentTapePoint == 0)
-                {
-                    inclineBetweenPoints = 0f;
-                }
-                else if (currentTapePoint == 1)
-                {
-                    inclineBetweenPoints = Vector3.Angle(tapePoints[0].transform.position, reticle.transform.position);
-                }
-                else if (currentTapePoint == 2)
-                {
-                    inclineBetweenPoints = Vector3.Angle(tapePoints[0].transform.position, tapePoints[1].transform.position);
-                }
-                Measurement = inclineBetweenPoints;
+            case Unit.cm:
+                convertedDistance = distanceBetweenPoints * 100;
                 break;
-            case Mode.percent:
-                
+            case Unit.i:
+                convertedDistance = distanceBetweenPoints / 0.0254f;
+                break;
+            case Unit.f:
+                convertedDistance = distanceBetweenPoints * 3.2808f;
                 break;
             default:
                 break;
         }
 
-        //change the text to display the Measurement
-        string measStr = Measurement.ToString("#.##") + currentMode;
+        //change the text to display the distance
+        string distanceStr = convertedDistance.ToString("#.##") + currentUnit;
 
-        measText.text = measStr;
-        floatingMeasurementText.text = measStr;
+        distanceText.text = distanceStr;
+        floatingDistanceText.text = distanceStr;
 
     }
 
@@ -162,7 +152,7 @@ public class TapeManager : MonoBehaviour
         if (currentTapePoint == 1)
         {
             line.SetPosition(1, reticle.transform.position);
-
+            
         }
         else if (currentTapePoint == 2)
         {
@@ -175,35 +165,35 @@ public class TapeManager : MonoBehaviour
     {
         if (currentTapePoint == 0)
         {
-            floatingMeasurementObject.SetActive(false);
+            floatingDistanceObject.SetActive(false);
         }
         else if (currentTapePoint == 1)
         {
-            floatingMeasurementObject.SetActive(true);
-            floatingMeasurementObject.transform.position = Vector3.Lerp(tapePoints[0].transform.position, reticle.transform.position, 0.5f);
+            floatingDistanceObject.SetActive(true);
+            floatingDistanceObject.transform.position = Vector3.Lerp(tapePoints[0].transform.position, reticle.transform.position, 0.5f);
         }
         else if (currentTapePoint == 2)
         {
-            floatingMeasurementObject.SetActive(true);
-            floatingMeasurementObject.transform.position = Vector3.Lerp(tapePoints[0].transform.position, tapePoints[1].transform.position, 0.5f);
+            floatingDistanceObject.SetActive(true);
+            floatingDistanceObject.transform.position = Vector3.Lerp(tapePoints[0].transform.position, tapePoints[1].transform.position, 0.5f);
         }
 
-        floatingMeasurementObject.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward, Camera.main.transform.up);
+        floatingDistanceObject.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward, Camera.main.transform.up);
 
     }
 
     //casting string (from the inspector) into a Unit so we can act upon it
-    public void ChangeMode(string mode)
+    public void ChangeUnit(string unit)
     {
-        currentMode = (Mode)System.Enum.Parse(typeof(Mode), mode);
+        currentUnit = (Unit)System.Enum.Parse(typeof (Unit), unit);
     }
 
 
 }
 
-public enum Mode
-{
-    meter,
-    degree,
-    percent
+public enum Unit {
+    m,
+    cm,
+    i,
+    f
 }
