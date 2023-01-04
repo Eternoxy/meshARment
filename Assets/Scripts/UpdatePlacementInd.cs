@@ -10,17 +10,14 @@ using System;
 public class UpdatePlacementInd : MonoBehaviour
 {
 
-    public GameObject objectToPlace;
     public GameObject placementIndicator;
     ARRaycastManager aRRaycastManager;
 
-    private ARSessionOrigin arOrigin;
     private Pose placementPose;
     private bool placementPoseIsValid = false;
     // Start is called before the first frame update
     void Start()
     {
-        arOrigin = FindObjectOfType<ARSessionOrigin>();
         aRRaycastManager = GetComponent<ARRaycastManager>();
     }
 
@@ -30,14 +27,7 @@ public class UpdatePlacementInd : MonoBehaviour
         UpdatePlacementPose();
         UpdatePlacementIndicator();
 
-        if (placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-        {
-            PlaceObject();
-        }        
-    }
-    private void PlaceObject()
-    {
-        Instantiate(objectToPlace, placementPose.position, placementPose.rotation);
+       
     }
 
     private void UpdatePlacementIndicator()
@@ -57,7 +47,7 @@ public class UpdatePlacementInd : MonoBehaviour
     {
         var screenCenter = Camera.current.ViewportToScreenPoint(new Vector3(0.5f, 0.5f));
         var hits = new List<ARRaycastHit>();
-        aRRaycastManager.Raycast(screenCenter, hits, TrackableType.Planes);
+        aRRaycastManager.Raycast(screenCenter, hits, TrackableType.AllTypes);
 
         placementPoseIsValid = hits.Count > 0;
         if (placementPoseIsValid)
