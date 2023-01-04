@@ -63,7 +63,7 @@ public class TapeManager : MonoBehaviour
             }
                 
             //if the user taps, place a tape point. disable more placements until the end of the touch
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+            if (Input.GetButtonDown("PlaceButton"))
             {
                 if (currentTapePoint < 2)
                 {
@@ -71,7 +71,7 @@ public class TapeManager : MonoBehaviour
                 }
                 placementEnabled = false;
             }
-            else if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
+            else if(Input.GetButtonDown("PlaceButton"))
             {
                 placementEnabled = true;
             }
