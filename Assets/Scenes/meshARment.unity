@@ -1907,7 +1907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plusButton: {fileID: 757215283}
-  resetButton: {fileID: 1935349969}
+  removeButton: {fileID: 1935349969}
   tapePoints:
   - {fileID: 185509313}
   - {fileID: 421890505}
