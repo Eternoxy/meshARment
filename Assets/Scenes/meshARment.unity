@@ -1906,8 +1906,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6487698a749f0f4182b9fbfbf836395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plusButton: {fileID: 0}
-  resetButton: {fileID: 0}
+  plusButton: {fileID: 757215283}
+  resetButton: {fileID: 1935349969}
   tapePoints:
   - {fileID: 185509313}
   - {fileID: 421890505}
