@@ -10,7 +10,8 @@ public class TapeManager : MonoBehaviour
 {
     ARRaycastManager aRRaycastManager;
 
-    public Button button;
+    public Button plusButton;
+    public Button resetButton;
     bool buttonPressed = false;
     public GameObject[] tapePoints;
 
@@ -36,7 +37,8 @@ public class TapeManager : MonoBehaviour
     void Start()
     {
         aRRaycastManager = GetComponent<ARRaycastManager>();
-        button.onClick.AddListener(OnButtonClick);
+        plusButton.onClick.AddListener(OnPlusButtonClick);
+        resetButton.onClick.AddListener(OnResetButtonClick);
     }
 
     // Update is called once per frame
@@ -91,9 +93,23 @@ public class TapeManager : MonoBehaviour
 
     }
 
-    public void OnButtonClick()
+    public void OnPlusButtonClick()
     {
         buttonPressed = true;
+    }
+
+    public void OnResetButtonClick()
+    {
+        tapePoints[currentTapePoint].SetActive(false);
+        currentTapePoint -= 1;
+
+        
+        if (currentTapePoint == 1)
+        {
+            DrawLine();
+        }
+
+
     }
 
     //change the position of the approperiate tape point and make it active.
