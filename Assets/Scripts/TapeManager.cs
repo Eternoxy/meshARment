@@ -11,8 +11,10 @@ public class TapeManager : MonoBehaviour
     ARRaycastManager aRRaycastManager;
 
     public Button plusButton;
-    public Button resetButton;
+    public Button removeButton;
     bool buttonPressed = false;
+
+    bool removeButtonPressed = false;
     public GameObject[] tapePoints;
 
 
@@ -38,7 +40,7 @@ public class TapeManager : MonoBehaviour
     {
         aRRaycastManager = GetComponent<ARRaycastManager>();
         plusButton.onClick.AddListener(OnPlusButtonClick);
-        resetButton.onClick.AddListener(OnResetButtonClick);
+        removeButton.onClick.AddListener(OnRemoveButtonClick);
     }
 
     // Update is called once per frame
@@ -83,6 +85,12 @@ public class TapeManager : MonoBehaviour
                 buttonPressed = false;
             }
 
+            if (removeButtonPressed == true)
+            {
+                RemovePoint(currentTapePoint);
+                removeButtonPressed = false;
+            }
+
         }
 
         //if the raycast isn't hitting anything, don't display the reticle
@@ -98,9 +106,13 @@ public class TapeManager : MonoBehaviour
         buttonPressed = true;
     }
 
-    public void OnResetButtonClick()
+    public void OnRemoveButtonClick()
     {
-        tapePoints[currentTapePoint].SetActive(false);
+        removeButtonPressed = true;
+    }
+    public void RemovePoint(int pointIndex)
+    {
+        tapePoints[pointIndex].SetActive(false);
         currentTapePoint -= 1;
 
         
