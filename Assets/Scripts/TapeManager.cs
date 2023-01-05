@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using TMPro;
@@ -9,10 +10,15 @@ public class TapeManager : MonoBehaviour
 {
     ARRaycastManager aRRaycastManager;
 
+    public Button button;
+    bool buttonPressed = false;
     public GameObject[] tapePoints;
+
+
     public GameObject reticle;
 
     float distanceBetweenPoints = 0f;
+
 
     int currentTapePoint = 0;
 
@@ -22,7 +28,7 @@ public class TapeManager : MonoBehaviour
     public GameObject floatingDistanceObject;
 
     public LineRenderer line;
-    
+
     bool placementEnabled = true;
 
     Unit currentUnit = Unit.m;
@@ -30,12 +36,13 @@ public class TapeManager : MonoBehaviour
     void Start()
     {
         aRRaycastManager = GetComponent<ARRaycastManager>();
+        button.onClick.AddListener(OnButtonClick);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
         UpdateDistance();
         PlaceFloatingText();
 
@@ -45,6 +52,7 @@ public class TapeManager : MonoBehaviour
         aRRaycastManager.Raycast(new Vector2(Screen.width / 2, Screen.height / 2), hits, TrackableType.PlaneWithinPolygon);
 
         //if the raycast hits a plane, update the reticle
+        
         if (hits.Count > 0)
         {
             reticle.transform.position = hits[0].pose.position;
@@ -61,20 +69,18 @@ public class TapeManager : MonoBehaviour
             {
                 reticle.SetActive(true);
             }
-                
+
             //if the user taps, place a tape point. disable more placements until the end of the touch
-            if (Input.GetButtonDown("PlaceButton"))
+            if (buttonPressed == true)
             {
                 if (currentTapePoint < 2)
                 {
                     PlacePoint(hits[0].pose.position, currentTapePoint);
                 }
                 placementEnabled = false;
+                buttonPressed = false;
             }
-            else if(Input.GetButtonDown("PlaceButton"))
-            {
-                placementEnabled = true;
-            }
+
         }
 
         //if the raycast isn't hitting anything, don't display the reticle
@@ -83,6 +89,11 @@ public class TapeManager : MonoBehaviour
             reticle.SetActive(false);
         }
 
+    }
+
+    public void OnButtonClick()
+    {
+        buttonPressed = true;
     }
 
     //change the position of the approperiate tape point and make it active.
@@ -152,7 +163,7 @@ public class TapeManager : MonoBehaviour
         if (currentTapePoint == 1)
         {
             line.SetPosition(1, reticle.transform.position);
-            
+
         }
         else if (currentTapePoint == 2)
         {
@@ -185,13 +196,14 @@ public class TapeManager : MonoBehaviour
     //casting string (from the inspector) into a Unit so we can act upon it
     public void ChangeUnit(string unit)
     {
-        currentUnit = (Unit)System.Enum.Parse(typeof (Unit), unit);
+        currentUnit = (Unit)System.Enum.Parse(typeof(Unit), unit);
     }
 
 
 }
 
-public enum Unit {
+public enum Unit
+{
     m,
     cm,
     i,
