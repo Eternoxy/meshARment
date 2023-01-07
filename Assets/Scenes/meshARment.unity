@@ -447,7 +447,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6652836191938364679, guid: bc68d0e066738dc47af3189a87cbf365, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: d
+      value: meter
       objectReference: {fileID: 0}
     - target: {fileID: 6652836191938364697, guid: bc68d0e066738dc47af3189a87cbf365, type: 3}
       propertyPath: m_AnchorMax.y
@@ -507,7 +507,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6652836191973379745, guid: bc68d0e066738dc47af3189a87cbf365, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: i
+      value: degree
       objectReference: {fileID: 0}
     - target: {fileID: 6652836191973379747, guid: bc68d0e066738dc47af3189a87cbf365, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1807,7 +1807,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59a80ab8562b074479ed0b0b9ee40835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToPlace: {fileID: 0}
   placementIndicator: {fileID: 1213751076}
   tapePoints:
   - {fileID: 185509313}

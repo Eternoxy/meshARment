@@ -9,7 +9,6 @@ using TMPro;
 
 public class PlacementInd : MonoBehaviour
 {
-    public GameObject objectToPlace;
     public GameObject placementIndicator;
 
     public GameObject[] tapePoints;
@@ -28,7 +27,7 @@ public class PlacementInd : MonoBehaviour
     public TMP_Text floatingDistanceText;
     public GameObject floatingDistanceObject;
 
-    Mode currentMode = Mode.d;
+    Mode currentMode = Mode.meter;
 
     public LineRenderer line;
 
@@ -125,7 +124,7 @@ public class PlacementInd : MonoBehaviour
     {
         switch (currentMode)
         {
-            case Mode.d:
+            case Mode.meter:
                 if (currentTapePoint == 0)
                 {
                     measurement = 0f;
@@ -139,7 +138,7 @@ public class PlacementInd : MonoBehaviour
                     measurement = Vector3.Distance(tapePoints[0].transform.position, tapePoints[1].transform.position);
                 }
                 break;
-            case Mode.i:
+            case Mode.degree:
                 if (currentTapePoint == 0)
                 {
                     measurement = 0f;
@@ -197,6 +196,6 @@ public class PlacementInd : MonoBehaviour
 
 public enum Mode
 {
-    d,
-    i
+    meter,
+    degree
 }
