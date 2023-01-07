@@ -68,7 +68,7 @@ public class PlacementInd : MonoBehaviour
     void DrawLine()
     {
         line.enabled = true;
-        line.SetPosition(0, placementPose.position);
+        line.SetPosition(0, tapePoints[0].transform.position);
         if (currentTapePoint == 1)
         {
             line.SetPosition(1, placementPose.position);
