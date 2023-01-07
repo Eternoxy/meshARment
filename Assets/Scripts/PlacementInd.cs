@@ -46,6 +46,10 @@ public class PlacementInd : MonoBehaviour
             PlacePoint(placementPose.position, currentTapePoint);
             plusButtonPressed = false;
         }
+        if (currentTapePoint == 1)
+        {
+            DrawLine();
+        }
 
     }
 

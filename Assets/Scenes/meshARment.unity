@@ -1002,11 +1002,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1824589365045356997, guid: 253a717aade45cc4c9ae838ec317b76c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 1824589365045356997, guid: 253a717aade45cc4c9ae838ec317b76c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 1824589365045356997, guid: 253a717aade45cc4c9ae838ec317b76c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -1014,7 +1014,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1824589365045356997, guid: 253a717aade45cc4c9ae838ec317b76c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 1824589365045356997, guid: 253a717aade45cc4c9ae838ec317b76c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1025,6 +1025,11 @@ PrefabInstance:
 --- !u!1 &1213751075 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1824589365045356996, guid: 253a717aade45cc4c9ae838ec317b76c, type: 3}
+  m_PrefabInstance: {fileID: 1213751074}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1213751076 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1824589364742048061, guid: 253a717aade45cc4c9ae838ec317b76c, type: 3}
   m_PrefabInstance: {fileID: 1213751074}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1258804218
@@ -1792,7 +1797,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToPlace: {fileID: 0}
-  placementIndicator: {fileID: 1213751075}
+  placementIndicator: {fileID: 1213751076}
   tapePoints:
   - {fileID: 185509313}
   - {fileID: 421890505}
