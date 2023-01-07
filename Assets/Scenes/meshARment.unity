@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TapePoint 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5624962255305553913, guid: 0f6d7dacb6ba7f146a8ac7df895e4bf4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5624962255305553915, guid: 0f6d7dacb6ba7f146a8ac7df895e4bf4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1219,6 +1223,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlacementIndicator
       objectReference: {fileID: 0}
+    - target: {fileID: 1824589365045356997, guid: 253a717aade45cc4c9ae838ec317b76c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824589365045356997, guid: 253a717aade45cc4c9ae838ec317b76c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824589365045356997, guid: 253a717aade45cc4c9ae838ec317b76c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 253a717aade45cc4c9ae838ec317b76c, type: 3}
 --- !u!1 &1213751075 stripped
@@ -1236,6 +1252,10 @@ PrefabInstance:
     - target: {fileID: 2062541729996376290, guid: 44aaac4b0d10bd447b8cb220954cfa6c, type: 3}
       propertyPath: m_Name
       value: Reticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062541729996376290, guid: 44aaac4b0d10bd447b8cb220954cfa6c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2062541729996376318, guid: 44aaac4b0d10bd447b8cb220954cfa6c, type: 3}
       propertyPath: m_RootOrder
@@ -1874,6 +1894,7 @@ GameObject:
   - component: {fileID: 2022670351}
   - component: {fileID: 2022670350}
   - component: {fileID: 2022670353}
+  - component: {fileID: 2022670354}
   m_Layer: 0
   m_Name: AR Session Origin
   m_TagString: Untagged
@@ -1958,7 +1979,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2022670345}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6487698a749f0f4182b9fbfbf836395, type: 3}
   m_Name: 
@@ -1973,6 +1994,20 @@ MonoBehaviour:
   floatingDistanceText: {fileID: 1409861180}
   floatingDistanceObject: {fileID: 1409861179}
   line: {fileID: 2039424549}
+--- !u!114 &2022670354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022670345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59a80ab8562b074479ed0b0b9ee40835, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToPlace: {fileID: 185509313}
+  placementIndicator: {fileID: 1213751075}
 --- !u!1001 &2039424548
 PrefabInstance:
   m_ObjectHideFlags: 0
