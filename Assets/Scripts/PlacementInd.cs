@@ -41,7 +41,7 @@ public class PlacementInd : MonoBehaviour
         UpdatePlacementIndicator();
         UpdateMeasurement();
 
-        if (plusButtonPressed == true || currentTapePoint < 2)
+        if (plusButtonPressed == true && currentTapePoint < 2)
         {
             PlacePoint(placementPose.position, currentTapePoint);
             plusButtonPressed = false;
