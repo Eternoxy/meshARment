@@ -145,11 +145,13 @@ public class PlacementInd : MonoBehaviour
                 }
                 else if (currentTapePoint == 1)
                 {
-                    measurement = Vector3.Angle(tapePoints[0].transform.position, placementPose.position);
+                    //measurement = Vector3.Angle(tapePoints[0].transform.position, placementPose.position);
+                    measurement = CalculateAngle(tapePoints[0].transform.position, placementPose.position);
                 }
                 else if (currentTapePoint == 2)
                 {
-                    measurement = Vector3.Angle(tapePoints[0].transform.position, tapePoints[1].transform.position);
+                    //measurement = Vector3.Angle(tapePoints[0].transform.position, tapePoints[1].transform.position);
+                    measurement = CalculateAngle(tapePoints[0].transform.position, tapePoints[1].transform.position);
                 }
                 break;
 
@@ -186,6 +188,12 @@ public class PlacementInd : MonoBehaviour
     public void OnPlusButtonClick()
     {
         plusButtonPressed = true;
+    }
+    public float CalculateAngle (Vector3 point1, Vector3 point2)
+    {
+        var horizontalDistanceBetweenPoints = Mathf.Sqrt(Mathf.Pow(point1[0]-point2[0],2)+Mathf.Pow(point1[1]-point2[1],2));
+        var angle = Mathf.Atan2(horizontalDistanceBetweenPoints, point1[2]-point2[2]) * Mathf.Rad2Deg;
+        return angle;
     }
 
     public void ChangeMode(string mode)
