@@ -436,14 +436,18 @@ PrefabInstance:
     - target: {fileID: 6652836191938364679, guid: bc68d0e066738dc47af3189a87cbf365, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2022670354}
     - target: {fileID: 6652836191938364679, guid: bc68d0e066738dc47af3189a87cbf365, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeUnit
+      value: ChangeMode
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652836191938364679, guid: bc68d0e066738dc47af3189a87cbf365, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlacementInd, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6652836191938364679, guid: bc68d0e066738dc47af3189a87cbf365, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: meter
+      value: d
       objectReference: {fileID: 0}
     - target: {fileID: 6652836191938364697, guid: bc68d0e066738dc47af3189a87cbf365, type: 3}
       propertyPath: m_AnchorMax.y
@@ -463,7 +467,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6652836191938364698, guid: bc68d0e066738dc47af3189a87cbf365, type: 3}
       propertyPath: m_Name
-      value: meterButton
+      value: distanceButton
       objectReference: {fileID: 0}
     - target: {fileID: 6652836191972828711, guid: bc68d0e066738dc47af3189a87cbf365, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -492,14 +496,18 @@ PrefabInstance:
     - target: {fileID: 6652836191973379745, guid: bc68d0e066738dc47af3189a87cbf365, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2022670354}
     - target: {fileID: 6652836191973379745, guid: bc68d0e066738dc47af3189a87cbf365, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeUnit
+      value: ChangeMode
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652836191973379745, guid: bc68d0e066738dc47af3189a87cbf365, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlacementInd, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6652836191973379745, guid: bc68d0e066738dc47af3189a87cbf365, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: degree
+      value: i
       objectReference: {fileID: 0}
     - target: {fileID: 6652836191973379747, guid: bc68d0e066738dc47af3189a87cbf365, type: 3}
       propertyPath: m_AnchorMax.y
@@ -519,11 +527,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6652836191973379748, guid: bc68d0e066738dc47af3189a87cbf365, type: 3}
       propertyPath: m_Name
-      value: degreeButton
+      value: inclineButton
       objectReference: {fileID: 0}
     - target: {fileID: 6652836192411562649, guid: bc68d0e066738dc47af3189a87cbf365, type: 3}
       propertyPath: m_text
       value: '%'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652836192854651239, guid: bc68d0e066738dc47af3189a87cbf365, type: 3}
+      propertyPath: m_text
+      value: m
       objectReference: {fileID: 0}
     - target: {fileID: 6652836193235338249, guid: bc68d0e066738dc47af3189a87cbf365, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

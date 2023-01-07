@@ -21,6 +21,8 @@ public class PlacementInd : MonoBehaviour
     private Pose placementPose;
     private bool placementPoseIsValid = false;
     private bool plusButtonPressed = false;
+    float distanceBetweenPoints = 0f;
+    Mode currentMode = Mode.d;
 
     public LineRenderer line;
 
@@ -37,6 +39,7 @@ public class PlacementInd : MonoBehaviour
     {
         UpdatePlacementPose();
         UpdatePlacementIndicator();
+        UpdateMeasurement();
 
         if (plusButtonPressed == true || currentTapePoint < 2)
         {
@@ -45,7 +48,10 @@ public class PlacementInd : MonoBehaviour
 
             plusButtonPressed = false;
         }
-        DrawLine();
+        if (currentTapePoint == 1)
+        {
+            DrawLine();
+        }
     }
 
 
@@ -109,8 +115,41 @@ public class PlacementInd : MonoBehaviour
             placementPose.rotation = Quaternion.LookRotation(cameraBearing);
         }
     }
+    void UpdateMeasurement()
+    {
+        switch (currentMode)
+        {
+            case Mode.d:
+                if (currentTapePoint == 0)
+                {
+                    distanceBetweenPoints = 0f;
+                }
+                else if (currentTapePoint == 1)
+                {
+                    distanceBetweenPoints = Vector3.Distance(tapePoints[0].transform.position, placementPose.position);
+                }
+                else if (currentTapePoint == 2)
+                {
+                    distanceBetweenPoints = Vector3.Distance(tapePoints[0].transform.position, tapePoints[1].transform.position);
+                }
+                break;
+        }
+
+    }
+
     public void OnPlusButtonClick()
     {
         plusButtonPressed = true;
     }
+
+    public void ChangeMode(string mode)
+    {
+        currentMode = (Mode)System.Enum.Parse(typeof(Mode), mode);
+    }
+}
+
+public enum Mode
+{
+    d,
+    i
 }
