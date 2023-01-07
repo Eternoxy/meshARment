@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using TMPro;
 
 
 public class PlacementInd : MonoBehaviour
@@ -21,7 +22,12 @@ public class PlacementInd : MonoBehaviour
     private Pose placementPose;
     private bool placementPoseIsValid = false;
     private bool plusButtonPressed = false;
-    float distanceBetweenPoints = 0f;
+    float measurement = 0f;
+    public TMP_Text distanceText;
+
+    public TMP_Text floatingDistanceText;
+    public GameObject floatingDistanceObject;
+
     Mode currentMode = Mode.d;
 
     public LineRenderer line;
@@ -40,6 +46,7 @@ public class PlacementInd : MonoBehaviour
         UpdatePlacementPose();
         UpdatePlacementIndicator();
         UpdateMeasurement();
+        PlaceFloatingText();
 
         if (plusButtonPressed == true && currentTapePoint < 2)
         {
@@ -121,18 +128,59 @@ public class PlacementInd : MonoBehaviour
             case Mode.d:
                 if (currentTapePoint == 0)
                 {
-                    distanceBetweenPoints = 0f;
+                    measurement = 0f;
                 }
                 else if (currentTapePoint == 1)
                 {
-                    distanceBetweenPoints = Vector3.Distance(tapePoints[0].transform.position, placementPose.position);
+                    measurement = Vector3.Distance(tapePoints[0].transform.position, placementPose.position);
                 }
                 else if (currentTapePoint == 2)
                 {
-                    distanceBetweenPoints = Vector3.Distance(tapePoints[0].transform.position, tapePoints[1].transform.position);
+                    measurement = Vector3.Distance(tapePoints[0].transform.position, tapePoints[1].transform.position);
                 }
                 break;
+            case Mode.i:
+                if (currentTapePoint == 0)
+                {
+                    measurement = 0f;
+                }
+                else if (currentTapePoint == 1)
+                {
+                    measurement = Vector3.Angle(tapePoints[0].transform.position, placementPose.position);
+                }
+                else if (currentTapePoint == 2)
+                {
+                    measurement = Vector3.Angle(tapePoints[0].transform.position, tapePoints[1].transform.position);
+                }
+                break;
+
+
         }
+        string distanceStr = measurement.ToString("#.##") + currentMode;
+
+        distanceText.text = distanceStr;
+        floatingDistanceText.text = distanceStr;
+
+
+    }
+    void PlaceFloatingText()
+    {
+        if (currentTapePoint == 0)
+        {
+            floatingDistanceObject.SetActive(false);
+        }
+        else if (currentTapePoint == 1)
+        {
+            floatingDistanceObject.SetActive(true);
+            floatingDistanceObject.transform.position = Vector3.Lerp(tapePoints[0].transform.position, placementPose.position, 0.5f);
+        }
+        else if (currentTapePoint == 2)
+        {
+            floatingDistanceObject.SetActive(true);
+            floatingDistanceObject.transform.position = Vector3.Lerp(tapePoints[0].transform.position, tapePoints[1].transform.position, 0.5f);
+        }
+
+        floatingDistanceObject.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward, Camera.main.transform.up);
 
     }
 
