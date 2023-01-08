@@ -191,8 +191,8 @@ public class PlacementInd : MonoBehaviour
     }
     public float CalculateAngle (Vector3 point1, Vector3 point2)
     {
-        var horizontalDistanceBetweenPoints = Mathf.Sqrt(Mathf.Pow(point1[0]-point2[0],2)+Mathf.Pow(point1[1]-point2[1],2));
-        var angle = Mathf.Atan2(horizontalDistanceBetweenPoints, point1[2]-point2[2]) * Mathf.Rad2Deg;
+        var horizontalDistanceBetweenPoints = Mathf.Sqrt(Mathf.Pow(point1[0]-point2[0],2)+Mathf.Pow(point1[2]-point2[2],2));
+        var angle = Mathf.Atan2(horizontalDistanceBetweenPoints, point1[1]-point2[1]) * Mathf.Rad2Deg;
         return angle;
     }
 
